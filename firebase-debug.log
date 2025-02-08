@@ -1,0 +1,21 @@
+[debug] [2025-02-08T22:05:15.357Z] ----------------------------------------------------------------------
+[debug] [2025-02-08T22:05:15.359Z] Command:       /usr/local/bin/firebase /Users/smritikhulbe/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init
+[debug] [2025-02-08T22:05:15.360Z] CLI Version:   13.30.0
+[debug] [2025-02-08T22:05:15.360Z] Platform:      darwin
+[debug] [2025-02-08T22:05:15.360Z] Node Version:  v18.5.0
+[debug] [2025-02-08T22:05:15.362Z] Time:          Sat Feb 08 2025 16:05:15 GMT-0600 (Central Standard Time)
+[debug] [2025-02-08T22:05:15.362Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-02-08T22:05:15.374Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-08T22:05:15.376Z] > authorizing via signed-in user (smritikhulbe@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/smritikhulbe/Documents/GitHub/MinneHack2025
+
