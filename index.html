@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Name Here - Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -22,3 +23,50 @@
     <script src="script.js"></script>
 </body>
 </html>
+=======
+    <title>Neighborhood Connect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+      <nav>
+        <div class="left-nav">
+          <a href="#">Home</a>
+          <a href="#">Events</a>
+        </div>
+        <div class="right-nav">
+          <a href="#">Messages</a>
+          <a href="#" id="profile-link">Profile</a>
+          <a href="#" id="login-link">Login</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="feed">
+          <h2>Feed</h2>
+          <div id="post-list"></div>
+          <button id="create-post-button">Create Post</button>
+      </section>
+
+      <div id="create-post-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Create a Post</h2>
+          <form id="new-request-form">
+            <label for="request-title">Title:</label><br>
+            <input type="text" id="request-title" name="request-title" required><br><br>
+
+            <label for="request-description">Description:</label><br>
+            <textarea id="request-description" name="request-description" rows="4" cols="50" required></textarea><br><br>
+
+            <button type="submit">Submit Post</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+>>>>>>> 2005966 (Initial commit)
