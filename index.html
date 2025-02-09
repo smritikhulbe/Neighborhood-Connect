@@ -9,7 +9,8 @@
         <nav>
             <div class="left-nav">
                 <a href="index.html" id="home-link">Home</a>
-                <a href="event.html" id="events-link">Events</a> </div>
+                <a href="event.html" id="events-link">Events</a>
+            </div>
             <div class="right-nav">
                 <a href="messages.html" id="messages-link">Messages</a>
                 <a href="profile.html" id="profile-link">Profile</a>
@@ -27,21 +28,18 @@
 
         <section id="help-requests">
             <h2>Help Requests</h2>
-            <div class="request">
-                <h3>Need help with gardening</h3>
+            <div class="request" data-request-id="1">  <h3>Need help with gardening</h3>
                 <p>Looking for someone to help me with some basic gardening tasks. I have all the tools, just need an extra pair of hands!</p>
                 <p>Posted by: Sarah J.</p>
-            </div>
-            <div class="request">
-                <h3>Moving help needed</h3>
-                <p>I'm moving next weekend and could really use some help loading boxes into the truck.  Pizza and drinks provided!</p>
+                <button class="reply-button">Reply</button> </div>
+            <div class="request" data-request-id="2"> <h3>Moving help needed</h3>
+                <p>I'm moving next weekend and could really use some help loading boxes into the truck. Pizza and drinks provided!</p>
                 <p>Posted by: Mike T.</p>
-            </div>
-            <div class="request">
-                <h3>Dog walking</h3>
+                <button class="reply-button">Reply</button>  </div>
+            <div class="request" data-request-id="3"> <h3>Dog walking</h3>
                 <p>Looking for a reliable dog walker for my golden retriever, Max. He's very friendly and loves walks in the park.</p>
                 <p>Posted by: Emily K.</p>
-            </div>
+                <button class="reply-button">Reply</button>  </div>
             <button id="view-all-requests">View All Help Requests</button>
         </section>
 
@@ -81,5 +79,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
-    <script src="script.js"></script>  </body>
+    <script src="script.js"></script>
+</body>
 </html>

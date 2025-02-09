@@ -20,6 +20,14 @@ function displayPosts() {
         });
         postDiv.appendChild(deleteButton);
 
+        // Add reply button
+        const replyButton = document.createElement('button');
+        replyButton.textContent = 'Reply';
+        replyButton.classList.add('reply-button'); // Add a class for easy selection
+        replyButton.addEventListener('click', () => {
+            openMessageModal(post.id); // Pass the post ID to the modal
+        });
+        postDiv.appendChild(replyButton);
 
         postList.appendChild(postDiv);
     });
@@ -40,6 +48,44 @@ function deletePost(postId) {
     posts = posts.filter(post => post.id !== postId);
     savePosts();
     displayPosts();
+}
+
+// Function to open the message modal (You'll need to add the modal HTML to your index.html)
+function openMessageModal(postId) {
+    const messageModal = document.getElementById('message-modal'); // Replace with your modal's ID
+    if (!messageModal) {
+        console.error("Message modal not found!");
+        return;
+    }
+
+    // Set the post ID in the modal (you can use a data attribute or a hidden input)
+    messageModal.dataset.postId = postId; // Or messageModal.querySelector('#post-id').value = postId;
+
+    messageModal.style.display = 'block';
+
+    const closeModal = messageModal.querySelector('.close'); // Replace '.close' with your close button's selector
+    if (closeModal) {
+        closeModal.addEventListener('click', () => {
+            messageModal.style.display = 'none';
+        });
+    }
+
+    window.addEventListener('click', (event) => {
+        if (event.target == messageModal) {
+            messageModal.style.display = "none";
+        }
+    });
+
+    const sendMessageButton = messageModal.querySelector('#send-message'); // Replace with your send button's ID
+    if (sendMessageButton) {
+        sendMessageButton.addEventListener('click', () => {
+            const message = messageModal.querySelector('#message-text').value; // Get the message text
+            console.log("Sending message to post ID:", postId, "Message:", message);
+            // Here you would add the logic to actually send the message
+            // (e.g., using Firebase or another backend).
+            messageModal.style.display = "none"; // Close the modal after sending
+        });
+    }
 }
 
 
