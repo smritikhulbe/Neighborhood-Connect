@@ -10,12 +10,13 @@
     <header>
         <nav>
             <div class="left-nav">
-                <a href="#" id="home-link">Home</a>
-                <a href="#" id="events-link">Events</a>
+                <a href="index.html" id="home-link">Home</a>
+                <a href="events.html" id="events-link">Events</a>
+                
             </div>
             <div class="right-nav">
-                <a href="#" id="messages-link">Messages</a>
-                <a href="#" id="profile-link">Profile</a>
+                <a href="messages.html" id="messages-link">Messages</a>
+                <a href="profile.html" id="profile-link">Profile</a>
                 <a href="#" id="login-link">Login</a>
             </div>
         </nav>
@@ -24,9 +25,20 @@
     <main>
         <section id="messages">
             <h2>Messages</h2>
-            <div id="message-list"></div>
+
+            <div class="message-container">
+                <div class="message-list" id="message-list">
+                    </div>
+
+                <div class="message-input">
+                    <textarea id="new-message" placeholder="Type your message..."></textarea>
+                    <button id="send-message">Send</button>
+                </div>
+            </div>
+
         </section>
     </main>
 
-    <script src="messages.js"></script> </body>
+    <script src="messages.js"></script>
+</body>
 </html>
