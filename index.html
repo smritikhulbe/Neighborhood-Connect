@@ -1,62 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neighborhood Connect</title>
+    <title>Neighborhood Connect - Index</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="left-nav">
-                <a href="#" id="home-link">Home</a>
-                <a href="#" id="event-link">Events</a>
-                
+                <a href="index.html" class="active">Home</a>
+                <a href="event.html" id="events-link">Events</a>
             </div>
             <div class="right-nav">
-                <a href="#" id="messages-link">Messages</a>
-                <a href="#" id="profile-link">Profile</a>
-                <a href="#" id="login-link">Login</a>
-                
+                <a href="messages.html" id="messages-link">Messages</a>
+                <a href="profile.html" id="profile-link">Profile</a>
+                <button id="login-button">Login</button>
+                <button id="logout-button" style="display: none;">Logout</button>
             </div>
         </nav>
     </header>
 
     <main>
-        <section id="feed" class="active">
-            <h2>Feed</h2>
-            <div id="post-list"></div>
-            <button id="create-post-button">Create Post</button>
+        <section id="hero">
+            <h1>Welcome to Neighborhood Connect!</h1>
+            <p>Connect with your community, share skills, find local events, and get the help you need.</p>
         </section>
 
-        <div id="create-post-modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Create a Post</h2>
-                <form id="new-request-form">
-                    <label for="request-title">Title:</label><br>
-                    <input type="text" id="request-title" name="request-title" required><br><br>
-
-                    <label for="request-description">Description:</label><br>
-                    <textarea id="request-description" name="request-description" rows="4" cols="50" required></textarea><br><br>
-
-                    <label>Skills (Optional):</label><br>
-                    <input type="checkbox" id="skill-gardening"><label for="skill-gardening">Gardening</label>
-                    <input type="checkbox" id="skill-tech"><label for="skill-tech">Tech Help</label>
-                    <input type="checkbox" id="skill-cooking"><label for="skill-cooking">Cooking</label>
-                    <br><br>
-
-                    <button type="submit">Submit Post</button>
-                </form>
+        <section id="help-requests">
+            <h2>Help Requests</h2>
+            <div class="request">
+                <h3>Need help with gardening</h3>
+                <p>Looking for someone to help me with some basic gardening tasks. I have all the tools, just need an extra pair of hands!</p>
+                <p>Posted by: Sarah J.</p>
             </div>
-        </div>
+            <div class="request">
+                <h3>Moving help needed</h3>
+                <p>I'm moving next weekend and could really use some help loading boxes into the truck.  Pizza and drinks provided!</p>
+                <p>Posted by: Mike T.</p>
+            </div>
+            <div class="request">
+                <h3>Dog walking</h3>
+                <p>Looking for a reliable dog walker for my golden retriever, Max. He's very friendly and loves walks in the park.</p>
+                <p>Posted by: Emily K.</p>
+            </div>
+            <button id="view-all-requests">View All Help Requests</button>
+        </section>
 
-        <section id="profile"></section>
-        <section id="messages"></section>
-        <section id="events"></section>
+        <section id="local-events">
+            <h2>Local Events</h2>
+            <div class="event">
+                <h3>Community Picnic</h3>
+                <p>Join us for a fun-filled day at the park with food, games, and music!</p>
+                <p>Date: July 15th</p>
+                <p>Location: Central Park</p>
+            </div>
+            <div class="event">
+                <h3>Neighborhood Book Club Meeting</h3>
+                <p>Discussing "The Midnight Library" this month. All are welcome!</p>
+                <p>Date: July 20th</p>
+                <p>Location: Community Library</p>
+            </div>
+            <button id="view-all-events">View All Events</button>
+        </section>
+
+        <section id="sharing-skills">
+            <h2>Sharing Skills</h2>
+            <div class="skill">
+                <h3>Guitar Lessons</h3>
+                <p>Offering beginner guitar lessons. Learn basic chords and strumming techniques.</p>
+                <p>Offered by: David L.</p>
+            </div>
+            <div class="skill">
+                <h3>Basic Web Design</h3>
+                <p>I can help you create a simple website for your business or personal use.</p>
+                <p>Offered by: Maria S.</p>
+            </div>
+            <button id="view-all-skills">View All Skills</button>
+        </section>
     </main>
 
-    <script src="script.js"></script>
-</body>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>  </body>
 </html>

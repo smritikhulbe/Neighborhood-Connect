@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newEventForm = document.getElementById('new-event-form');
 
     let events = JSON.parse(localStorage.getItem('events')) || [
-        // Example events (for demonstration)
+      
         { id: 1, title: "Neighborhood Cleanup", description: "Let's clean up our neighborhood!", date: "2024-03-15", location: "Community Park" },
         { id: 2, title: "Gardening Workshop", description: "Learn how to grow your own vegetables.", date: "2024-04-01", location: "Community Garden" },
     ];

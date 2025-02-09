@@ -1,11 +1,12 @@
 // server.js
 const http = require('http');
 const fs = require('fs');
+const path = require('path');
 const socketIO = require('socket.io');
 
 const server = http.createServer((req, res) => {
-    let filePath = __dirname + (req.url === '/' ? '/index.html' : req.url);
-    let extname = String(filePath.substring(filePath.lastIndexOf('.') + 1)).toLowerCase();
+    let filePath = path.join(__dirname, (req.url === '/' ? '/index.html' : req.url));
+    let extname = String(path.extname(filePath)).toLowerCase();
     let contentType = 'text/html';
 
     const mimeTypes = {
@@ -15,14 +16,16 @@ const server = http.createServer((req, res) => {
         json: 'application/json',
         png: 'image/png',
         jpg: 'image/jpg',
+        jpeg: 'image/jpeg',
+        gif: 'image/gif',
     };
 
     contentType = mimeTypes[extname] || 'application/octet-stream';
 
     fs.readFile(filePath, (error, content) => {
         if (error) {
-            if (error.code == 'ENOENT') {
-                fs.readFile(__dirname + '/404.html', (error, content) => {
+            if (error.code === 'ENOENT') {
+                fs.readFile(path.join(__dirname, '/404.html'), (error, content) => {
                     res.writeHead(404, { 'Content-Type': 'text/html' });
                     res.end(content, 'utf-8');
                 });
@@ -35,11 +38,10 @@ const server = http.createServer((req, res) => {
             res.end(content, 'utf-8');
         }
     });
-
 });
 
 const io = socketIO(server);
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 let messageHistory = [];
 
@@ -49,7 +51,7 @@ io.on('connection', (socket) => {
     socket.on('chat message', (msg, callback) => {
         messageHistory.push(msg);
         io.emit('chat message', msg);
-        callback({ status: 'ok' });
+        callback({ status: 'ok' }); // Send the status back to the client
     });
 
     socket.on('get messages', (callback) => {

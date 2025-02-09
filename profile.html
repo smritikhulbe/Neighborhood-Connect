@@ -10,13 +10,14 @@
     <header>
         <nav>
             <div class="left-nav">
-                <a href="#" id="home-link">Home</a>
-                <a href="#" id="event-link">Events</a>
+                <a href="index.html" id="home-link">Home</a>
+                <a href="event.html" id="events-link">Events</a>
             </div>
             <div class="right-nav">
-                <a href="#" id="messages-link">Messages</a>
-                <a href="#" id="profile-link">Profile</a>
-                <a href="#" id="login-link">Login</a>
+                <a href="messages.html" id="messages-link">Messages</a>
+                <a href="profile.html" id="profile-link">Profile</a>
+                <button id="login-button">Login</button>
+                <button id="logout-button" style="display: none;">Logout</button>
             </div>
         </nav>
     </header>
@@ -24,9 +25,17 @@
     <main>
         <section id="profile">
             <h2>Profile</h2>
-            <div id="profile-details"></div>
+
+            <div id="profile-content">
+            </div>
+
         </section>
     </main>
 
-    <script src="profile.js"></script> </body>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>
+    <script src="profile.js"></script>
+</body>
 </html>
