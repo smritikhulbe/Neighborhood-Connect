@@ -1,3 +1,4 @@
+// index.js
 let posts = JSON.parse(localStorage.getItem('posts')) || [];
 let nextPostId = posts.length > 0 ? Math.max(...posts.map(p => p.id)) + 1 : 1;
 
@@ -10,6 +11,16 @@ function displayPosts() {
         const postDiv = document.createElement('div');
         postDiv.classList.add('post');
         postDiv.innerHTML = `<h3>${post.title}</h3><p>${post.description}</p><p>Posted by: ${post.author}</p>`;
+
+        // Add delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', () => {
+            deletePost(post.id);
+        });
+        postDiv.appendChild(deleteButton);
+
+
         postList.appendChild(postDiv);
     });
 }
@@ -24,6 +35,14 @@ function createPost(title, description, author) {
     savePosts();
     displayPosts();
 }
+
+function deletePost(postId) {
+    posts = posts.filter(post => post.id !== postId);
+    savePosts();
+    displayPosts();
+}
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     displayPosts();
