@@ -124,31 +124,31 @@ close:focus {
   text-decoration: none;
   cursor: pointer;
 }
-/* style.css */
-/* ... (Your existing styles) */
+
 
 .message-container {
-  display: flex; /* Arrange message list and input side by side */
-  flex-direction: column; /* Stack message list and input vertically */
-  height: 400px; /* Set a fixed height for the container */
+  display: flex;
+  flex-direction: column; /* Vertical stacking */
+  height: 400px; /* Or adjust as needed */
   border: 1px solid #ccc;
+  overflow: hidden; /* Prevent content from overflowing */
 }
 
 .message-list {
-  flex: 1; /* Make message list take up available space */
-  overflow-y: scroll; /* Add scrollbar if messages overflow */
+  flex: 1; /* Takes up available space */
+  overflow-y: auto; /* Scrollbar if content overflows */
   padding: 10px;
 }
 
 .message-input {
-  display: flex; /* Arrange textarea and button horizontally */
+  display: flex; /* Horizontal layout */
   padding: 10px;
-  border-top: 1px solid #ccc; /* Add a top border */
+  border-top: 1px solid #ccc;
 }
 
 .message-input textarea {
-  flex: 1; /* Make textarea take up available space */
-  resize: none; /* Prevent resizing of textarea */
+  flex: 1; 
+  resize: none;
   border: 1px solid #ccc;
   padding: 5px;
 }
@@ -156,19 +156,82 @@ close:focus {
 .message-input button {
   margin-left: 10px;
   padding: 5px 10px;
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .message {
-  border-bottom: 1px solid #eee; 
+  border-bottom: 1px solid #eee;
   padding: 5px;
 }
 
 .message p {
-  margin: 0; 
+  margin: 0;
 }
 
+.message strong {
+  font-weight: bold;
+  color: #007bff;
+}
+#events { /* Style the events section */
+  padding: 20px;
+}
 
+#event-list { /* Style the list of events */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  grid-gap: 20px;
+}
+
+.event { /* Style individual event items */
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.event h3 {
+  margin-top: 0;
+}
+
+#create-event-button { /* Style the "Create Event" button */
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less */
+  border-radius: 5px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}

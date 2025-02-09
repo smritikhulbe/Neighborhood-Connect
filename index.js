@@ -110,4 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             activeSection.classList.add('active');
         }
     }
+
+    
+    
 });

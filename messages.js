@@ -4,43 +4,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const newMessageInput = document.getElementById('new-message');
     const sendMessageButton = document.getElementById('send-message');
 
-    let messages = JSON.parse(localStorage.getItem('messages')) || []; // Load messages from localStorage
-
-    function displayMessages() {
-        messageList.innerHTML = '';
-
-        messages.forEach(message => {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message');
-            messageDiv.innerHTML = `<p><strong>${message.sender}:</strong> ${message.text}</p>`;
-            messageList.appendChild(messageDiv);
-        });
-    }
-
-    function saveMessages() {
-        localStorage.setItem('messages', JSON.stringify(messages)); // Save messages to localStorage
-    }
+    let socket = io();
 
     sendMessageButton.addEventListener('click', () => {
         const messageText = newMessageInput.value;
-        if (messageText.trim() !== "") { // Don't send empty messages
-            const sender = localStorage.getItem('username') || "Guest"; // Get sender's username or "Guest"
+        if (messageText.trim() !== "") {
+            const sender = localStorage.getItem('username') || "Guest";
             const message = { sender: sender, text: messageText };
-            messages.push(message);
-            saveMessages();
-            displayMessages();
-            newMessageInput.value = ''; // Clear input field
+
+            socket.emit('chat message', message, (response) => {
+                if (response.status === 'ok') {
+                    newMessageInput.value = '';
+                } else {
+                    console.error("Error sending message:", response.message);
+                    alert("There was an error sending your message. Please try again.");
+                }
+            });
         }
     });
 
-    displayMessages(); // Initial display of messages
+    socket.on('chat message', (msg) => {
+        displayMessage(msg);
+    });
 
-    // ... (Navigation logic - same as before)
+    function displayMessage(message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.innerHTML = `<p><strong>${message.sender}:</strong> ${message.text}</p>`;
+        messageList.appendChild(messageDiv);
+        messageList.scrollTop = messageList.scrollHeight;
+    }
+
+    socket.on('connect', () => {
+        socket.emit('get messages', (response) => {
+            if (response.status === 'ok') {
+                response.messages.forEach(message => {
+                    displayMessage(message);
+                });
+            } else {
+                console.error("Error getting messages:", response.message);
+            }
+        });
+    });
+
+    // Navigation (Client-side - same as before)
     const homeLink = document.getElementById('home-link');
-    const eventsLink = document.getElementById('events-link');
+    const eventsLink = document.getElementById('event-link');
     const profileLink = document.getElementById('profile-link');
+    const messagesLink = document.getElementById('messages-link');
 
-    if (homeLink && eventsLink && profileLink) {
+    if (homeLink && eventsLink && profileLink && messagesLink) {
         homeLink.addEventListener('click', (event) => {
             event.preventDefault();
             window.location.href = "index.html";
@@ -48,13 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         eventsLink.addEventListener('click', (event) => {
             event.preventDefault();
-            window.location.href = "events.html";
+            window.location.href = "event.html";
         });
 
         profileLink.addEventListener('click', (event) => {
             event.preventDefault();
             window.location.href = "profile.html";
         });
-    }
 
+        messagesLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.location.href = "messages.html";
+        });
+    }
 });

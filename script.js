@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         eventsLink.addEventListener('click', (event) => {
             event.preventDefault();
-            window.location.href = "events.html";
+            window.location.href = "event.html";
         });
 
         messagesLink.addEventListener('click', (event) => {
