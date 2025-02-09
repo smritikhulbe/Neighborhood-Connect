@@ -3,70 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Name Here - Home</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="profile.html">Profile</a>
-        <a href="events.html">Events</a>
-        <a href="messages.html">Messages</a>
-    </nav>
-    <section id="feed">
-        <h2>Feed</h2>
-        <div id="post-list"></div>
-    </section>
-    <button id="create-post-button">Create Post</button>
-
-    <script src="script.js"></script>
-</body>
-</html>
-=======
     <title>Neighborhood Connect</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-      <nav>
-        <div class="left-nav">
-          <a href="#">Home</a>
-          <a href="#">Events</a>
-        </div>
-        <div class="right-nav">
-          <a href="#">Messages</a>
-          <a href="#" id="profile-link">Profile</a>
-          <a href="#" id="login-link">Login</a>
-        </div>
-      </nav>
+        <nav>
+            <div class="left-nav">
+                <a href="#" id="home-link">Home</a>
+                <a href="#" id="events-link">Events</a>
+            </div>
+            <div class="right-nav">
+                <a href="#" id="messages-link">Messages</a>
+                <a href="#" id="profile-link">Profile</a>
+                <a href="#" id="login-link">Login</a>
+            </div>
+        </nav>
     </header>
 
     <main>
-      <section id="feed">
-          <h2>Feed</h2>
-          <div id="post-list"></div>
-          <button id="create-post-button">Create Post</button>
-      </section>
+        <section id="feed" class="active">
+            <h2>Feed</h2>
+            <div id="post-list"></div>
+            <button id="create-post-button">Create Post</button>
+        </section>
 
-      <div id="create-post-modal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Create a Post</h2>
-          <form id="new-request-form">
-            <label for="request-title">Title:</label><br>
-            <input type="text" id="request-title" name="request-title" required><br><br>
+        <div id="create-post-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Create a Post</h2>
+                <form id="new-request-form">
+                    <label for="request-title">Title:</label><br>
+                    <input type="text" id="request-title" name="request-title" required><br><br>
 
-            <label for="request-description">Description:</label><br>
-            <textarea id="request-description" name="request-description" rows="4" cols="50" required></textarea><br><br>
+                    <label for="request-description">Description:</label><br>
+                    <textarea id="request-description" name="request-description" rows="4" cols="50" required></textarea><br><br>
 
-            <button type="submit">Submit Post</button>
-          </form>
+                    <label>Skills (Optional):</label><br>
+                    <input type="checkbox" id="skill-gardening"><label for="skill-gardening">Gardening</label>
+                    <input type="checkbox" id="skill-tech"><label for="skill-tech">Tech Help</label>
+                    <input type="checkbox" id="skill-cooking"><label for="skill-cooking">Cooking</label>
+                    <br><br>
+
+                    <button type="submit">Submit Post</button>
+                </form>
+            </div>
         </div>
-      </div>
+
+        <section id="profile">
+            <h2>Profile</h2>
+            <div id="profile-details"></div>
+        </section>
+
+        <section id="messages">
+            <h2>Messages</h2>
+            <div id="message-list"></div>
+        </section>
+
+        <section id="events">
+            <h2>Events</h2>
+            <div id="event-list"></div>
+        </section>
     </main>
 
-    <script src="script.js"></script>
-</body>
+    <script src="index.js"></script>  </body>
 </html>
->>>>>>> 2005966 (Initial commit)
