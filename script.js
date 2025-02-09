@@ -9,69 +9,48 @@ const firebaseConfig = {
     measurementId: "G-E2SPM1HDKW"
 };
 
+
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
-const db = firebase.firestore(); // If you're using Firestore
+const db = firebase.firestore(); // If you are using Firestore
 
 const authStatus = document.getElementById('auth-status');
-const loginButton = document.getElementById('login-button');
+const loginLink = document.getElementById('login-link');
 const logoutButton = document.getElementById('logout-button');
 
 auth.onAuthStateChanged(async (user) => {
-    if (user) {
-        authStatus.textContent = `Logged in as ${user.displayName || user.email}`;
-        loginButton.style.display = 'none';
-        logoutButton.style.display = 'inline-block';
+    if (initialAuthCheck) { // Only perform the redirect logic on the initial check
+        initialAuthCheck = false; // Set the flag to false after the first check
 
-        localStorage.setItem('user', JSON.stringify({
-            uid: user.uid,
-            displayName: user.displayName,
-            email: user.email
-        }));
+        if (user) {
+            authStatus.textContent = `Logged in as ${user.displayName || user.email}`;
+            loginLink.style.display = 'none';
+            logoutButton.style.display = 'inline-block';
+            // ... (Firestore user data logic - optional)
+        } else {
+            authStatus.textContent = "Not logged in";
+            loginLink.style.display = 'inline-block';
+            logoutButton.style.display = 'none';
 
-        // Example: Add user data to Firestore if it doesn't exist (optional)
-        if (db) { // Check if Firestore is initialized
-            try {
-                const userRef = db.collection('users').doc(user.uid);
-                const doc = await userRef.get();
-
-                if (!doc.exists) {
-                    await userRef.set({
-                        displayName: user.displayName || user.email,
-                        email: user.email,
-                        // ... other user data ...
-                    });
-                    console.log("User data added to Firestore");
-                }
-            } catch (error) {
-                console.error("Error with Firestore:", error);
+            if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
+                window.location.href = "login.html";
             }
         }
-
-    } else {
-        authStatus.textContent = "Not logged in";
-        loginButton.style.display = 'inline-block';
-        logoutButton.style.display = 'none';
-        localStorage.removeItem('user');
     }
 });
 
-loginButton.addEventListener('click', () => {
-    const provider = new firebase.auth.GoogleAuthProvider(); // Or other provider
-    auth.signInWithPopup(provider).then(() => {
-        // Handled by onAuthStateChanged
-    }).catch((error) => {
-        console.error("Login error:", error);
-    });
-});
 
+
+
+// Logout button event listener
 logoutButton.addEventListener('click', () => {
     auth.signOut().then(() => {
-        // Handled by onAuthStateChanged
+        window.location.href = "login.html"; // Redirect to login page after logout
     }).catch((error) => {
         console.error("Logout error:", error);
     });
 });
+
 
 // Navigation (Client-side - Make this function reusable)
 function setupNavigation() {
@@ -82,7 +61,7 @@ function setupNavigation() {
 
     if (homeLink && eventsLink && profileLink && messagesLink) {
         const handleNavigation = (event, href) => {
-            event.preventDefault();
+            event.preventDefault(); // Prevent default link behavior
             window.location.href = href;
         };
 
